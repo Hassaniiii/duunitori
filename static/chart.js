@@ -1,6 +1,8 @@
 // Chart drawing
 
-getData()
+window.onload = function() {
+    getData()
+}
 
 function getData() {
     $.get("/chart_info", function(err, req, resp) {
@@ -13,10 +15,10 @@ function draw_chart(info) {
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: info.date_posted,
+            labels: Object.keys(Object.values(info)[0]),
             datasets: [{
                 label: 'lukukerrat / päivää auki',
-                data: info.apply_clicks,
+                data: Object.values(Object.values(info)[0]),
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.2)',
                 ],
