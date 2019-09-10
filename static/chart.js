@@ -4,8 +4,6 @@ getData()
 
 function getData() {
     $.get("/chart_info", function(err, req, resp) {
-            console.log(resp.responseJSON.apply_clicks)
-            // draw_chart({"date_posted": ["aa", "bb"], "apply_clicks": [1, 2, 3] })
             draw_chart(resp.responseJSON)
     });
   }

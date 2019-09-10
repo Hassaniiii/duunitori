@@ -3,12 +3,12 @@ import json
 
 app = Flask(__name__)
 
-# open CSV file
-fileconnection = open("jobentry_export_2019-8-23T9_59.csv", "r")
-lines = fileconnection.readlines()
-
 @app.route("/")
 def main():    
+    # open CSV file
+    fileconnection = open("resources/jobentry_export_2019-8-23T9_59.csv", "r")
+    lines = fileconnection.readlines()
+
     # calculate desired values
     average = 0
     for line in lines[1:]:
@@ -22,6 +22,9 @@ def main():
 
 @app.route("/chart_info")
 def chart_info():
+    # open CSV file
+    fileconnection = open("resources/jobentry_export_2019-8-23T9_59.csv", "r")
+    lines = fileconnection.readlines()
 
     # calculate desired values
     dates = []
@@ -36,4 +39,4 @@ def chart_info():
     return jsonify({"date_posted": dates, "apply_clicks": clicks })
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
